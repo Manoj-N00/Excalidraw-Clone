@@ -13,7 +13,7 @@ export const useSocket = (roomId: string | null) => {
       return;
     }
 
-    const ws = new WebSocket(`${process.env.NEXT_PUBLIC_WS_URL}?token=${token}`);
+    const ws = new WebSocket(`wss://excalidraw-clone-1.onrender.com?token=${token}`);
 
     ws.onopen = () => {
       console.log("WebSocket connection opened");

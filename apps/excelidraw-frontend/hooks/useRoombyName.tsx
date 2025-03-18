@@ -1,45 +1,43 @@
-"use client"
+"use client";
 
-import { useEffect, useState } from "react"
+import { useEffect, useState } from "react";
 
 interface Room {
-    id: string
-    roomName: string
-    shape: []
-    userId: string
+    id: string;
+    roomName: string;
+    shape: [];
+    userId: string;
 }
 
 export const useRoomByName = (roomName: string) => {
-    const [room, setRoom] = useState<Room>()
+    const [room, setRoom] = useState<Room>();
 
-    useEffect(()=>{
-        const token = localStorage.getItem("token")
+    useEffect(() => {
+        const token = localStorage.getItem("token");
 
         const fetchRoom = async () => {
-            try{
-                const response = await fetch(`${process.env.NEXT_PUBLIC_HTTP_URL}/room/${roomName}`, {
+            try {
+                const response = await fetch(`https://excalidraw-clone.onrender.com/room/${roomName}`, {
                     method: "GET",
                     headers: {
-                        "authorization": `${token}`
-                    }
-                })
+                        "authorization": `${token}`,
+                    },
+                });
 
-                if(!response.ok){
-                    throw new Error("Something went wrong")
+                if (!response.ok) {
+                    throw new Error("Something went wrong");
                 }
 
-                const data : Room = await response.json()
-                console.log(data)
-                setRoom(data)
-
+                const data: Room = await response.json();
+                console.log(data);
+                setRoom(data);
+            } catch (err: any) {
+                console.log(err.message);
             }
-            catch(err : any){
-                console.log(err.message) 
-            }
-        }
+        };
 
-        fetchRoom()
-    }, [])
+        fetchRoom();
+    }, []);
 
-    return room
-}
+    return room;
+};

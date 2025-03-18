@@ -17,7 +17,6 @@ import {
 import { Input } from "../ui/input";
 import { Button } from "../ui/button";
 import { useState } from "react";
-
 import { useRouter } from "next/navigation";
 
 export function CreateRoomForm() {
@@ -39,7 +38,7 @@ export function CreateRoomForm() {
     const token = localStorage.getItem("token");
 
     try {
-      const response = await fetch(`${process.env.NEXT_PUBLIC_HTTP_URL}/room`, {
+      const response = await fetch("https://excalidraw-clone.onrender.com/room", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -104,13 +103,11 @@ export function CreateRoomForm() {
         {successRoom && (
           <div className="mt-4 p-4 bg-green-100 text-green-800 rounded-md">
             Room created successfully!{" "}
-
-              <a href={`/room/${successRoom}`} className="font-semibold text-blue-600 hover:underline">
-                <div className="flex items-center hover:underline">
+            <a href={`/room/${successRoom}`} className="font-semibold text-blue-600 hover:underline">
+              <div className="flex items-center hover:underline">
                 Go to /room/{successRoom}
-                </div>
-              </a>
-
+              </div>
+            </a>
           </div>
         )}
       </CardContent>
