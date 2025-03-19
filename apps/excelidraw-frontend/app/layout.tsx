@@ -1,5 +1,6 @@
+"use client"
 import type { Metadata } from "next";
-import { useEffect } from "react";
+import { use, useEffect } from "react";
 import "./global.css";
 
 export const metadata: Metadata = {
