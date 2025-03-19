@@ -1,6 +1,7 @@
-"use client"
+"use client";
+
 import type { Metadata } from "next";
-import { use, useEffect } from "react";
+import { useEffect } from "react";
 import "./global.css";
 
 export const metadata: Metadata = {
@@ -18,15 +19,23 @@ export default function RootLayout({
       );
 
       // WebSocket Keep-Alive
-      const ws = new WebSocket("https://excalidraw-clone-1.onrender.com?token={token}");
+      const ws = new WebSocket("wss://excalidraw-clone-1.onrender.com?token={token}");
+      
       ws.onopen = () => ws.send("ping"); // Send a lightweight message
       ws.onerror = err => console.error("WebSocket error:", err);
       ws.onclose = () => console.log("WebSocket closed");
+
+      // Ensure WebSocket is closed properly
+      return () => {
+        ws.close();
+      };
     };
 
     const interval = setInterval(keepAlive, 180000); // Every 3 minutes (180,000 ms)
 
-    return () => clearInterval(interval);
+    return () => {
+      clearInterval(interval);
+    };
   }, []);
 
   return (
