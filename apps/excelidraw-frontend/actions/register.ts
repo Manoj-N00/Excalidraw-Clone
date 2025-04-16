@@ -4,7 +4,8 @@ import { redirect } from "next/navigation"
 import { z } from "zod"
 
 export const register = async (values: z.infer<typeof RegisterSchema>) => {
-    const res = await fetch("https://excalidraw-clone.onrender.com/signup", {
+    // const res = await fetch("https://excalidraw-clone.onrender.com/signup", {
+const res = await fetch("https://excalidraw-clone-d5sx.onrender.com/signup", {
         method: "POST",
         headers: {
             "Content-Type": "application/json",

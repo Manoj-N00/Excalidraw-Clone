@@ -9,7 +9,8 @@ export const RoomCanvas = ({ roomId, room }: { roomId: string; room: any }) => {
     useEffect(() => {
         const token = localStorage.getItem("token");
 
-        const ws = new WebSocket(`https://excalidraw-clone-1.onrender.com/?token=${token}`);
+        // const ws = new WebSocket(`https://excalidraw-clone-1.onrender.com/?token=${token}`);
+const ws = new WebSocket(`https://excalidraw-clone-1-9ff5.onrender.com/?token=${token}`);
 
         ws.onopen = () => {
             setSocket(ws);

@@ -13,7 +13,8 @@ export const useSocket = (roomId: string | null) => {
       return;
     }
 
-    const ws = new WebSocket(`https://excalidraw-clone-1.onrender.com?token=${token}`);
+    // const ws = new WebSocket(`https://excalidraw-clone-1.onrender.com?token=${token}`);
+const ws = new WebSocket(`https://excalidraw-clone-1-9ff5.onrender.com?token=${token}`);
 
     ws.onopen = () => {
       console.log("WebSocket connection opened");
