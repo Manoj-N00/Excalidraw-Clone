@@ -1,0 +1,33 @@
+{
+  "version": 2,
+  "buildCommand": "pnpm start-all",
+  "outputDirectory": "apps/excelidraw-frontend/.next",
+  "builds": [
+    {
+      "src": "apps/excelidraw-frontend/next.config.js",
+      "use": "@vercel/next"
+    },
+    {
+      "src": "apps/http-backend/package.json",
+      "use": "@vercel/node"
+    },
+    {
+      "src": "apps/ws-backend/package.json",
+      "use": "@vercel/node"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/api/http/(.*)",
+      "dest": "apps/http-backend/dist/index.js"
+    },
+    {
+      "src": "/api/ws/(.*)",
+      "dest": "apps/ws-backend/dist/index.js"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "apps/excelidraw-frontend/$1"
+    }
+  ]
+}
