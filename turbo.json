@@ -1,10 +1,13 @@
 {
   "$schema": "https://turbo.build/schema.json",
   "ui": "tui",
+  "globalEnv": ["NODE_ENV", "JWT_SECRET"],
+  "globalPassThroughEnv": ["VERCEL_URL", "PORT"],
   "tasks": {
     "build": {
       "dependsOn": ["^build"],
       "inputs": ["$TURBO_DEFAULT$", ".env*"],
+      "env": ["NEXT_PUBLIC_*", "DATABASE_URL","JWT_SECRET"],
       "outputs": [
         "dist/**",
         "build/**",
