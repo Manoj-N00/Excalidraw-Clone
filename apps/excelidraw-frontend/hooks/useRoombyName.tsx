@@ -18,7 +18,7 @@ export const useRoomByName = (roomName: string) => {
         const fetchRoom = async () => {
             try {
                 // const response = await fetch(`https://excalidraw-clone.onrender.com/room/${roomName}`, {
-const response = await fetch(`https://excalidraw-clone-d5sx.onrender.com/room/${roomName}`, {
+const response = await fetch(`http://localhost:3001/room/${roomName}`, {
                     method: "GET",
                     headers: {
                         "authorization": `${token}`,
