@@ -17,9 +17,6 @@
     "typescript": "5.5.4"
   },
   "packageManager": "pnpm@9.0.0",
-  "engines": {
-    "node": ">=18"
-  },
   "dependencies": {
     "next": "^15.3.4"
   }

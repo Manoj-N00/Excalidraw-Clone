@@ -28,8 +28,8 @@ export const useUser = (): UseUserResponse => {
         const fetchUser = async () => {
             setIsLoading(true);
             try {
-                // const res = await fetch("https://excalidraw-clone.onrender.com/user", {
-const res = await fetch("http://localhost:3001/user", {
+                const res = await fetch("https://excalidraw-clone.onrender.com/user", {
+//const res = await fetch("http://localhost:3001/user", {
                     method: "GET",
                     headers: {
                         "authorization": `${localStorage.getItem("token")}`,
