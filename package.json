@@ -7,7 +7,7 @@
     "lint": "turbo lint",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "setup": "pnpm install --no-frozen-lockfile && cd packages/db && pnpm exec prisma migrate dev && pnpm exec prisma generate && cd ../.. && turbo run build",
-    "start-all": "turbo run dev --parallel --filter=http-backend --filter=ws-backend --filter=web"
+    "start-all": "turbo run build --filter=http-backend --filter=ws-backend --filter=web && cd apps/http-backend && pnpm start & cd ../ws-backend && pnpm start & cd ../excelidraw-frontend && pnpm start"
   },
   "devDependencies": {
     "prettier": "^3.2.5",
