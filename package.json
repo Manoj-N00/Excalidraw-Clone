@@ -7,9 +7,11 @@
     "lint": "turbo lint",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "setup": "pnpm install --no-frozen-lockfile && cd packages/db && pnpm exec prisma migrate dev && pnpm exec prisma generate && cd ../.. && turbo run build",
-    "start-all": "turbo run build --filter=http-backend --filter=ws-backend --filter=web && cd apps/http-backend && pnpm start & cd ../ws-backend && pnpm start & cd ../excelidraw-frontend && pnpm start"
+    "start-all": "cross-env NODE_ENV=production turbo run build --filter=http-backend --filter=ws-backend --filter=web && concurrently \"cd apps/http-backend && pnpm start\" \"cd apps/ws-backend && pnpm start\" \"cd apps/excelidraw-frontend && pnpm start\""
   },
   "devDependencies": {
+    "concurrently": "^8.2.2",
+    "cross-env": "^7.0.3",
     "prettier": "^3.2.5",
     "turbo": "^2.3.3",
     "typescript": "5.5.4"
