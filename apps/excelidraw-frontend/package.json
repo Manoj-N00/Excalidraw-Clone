@@ -3,13 +3,10 @@
   "version": "0.1.0",
   "type": "module",
   "private": true,
-  "engines": {
-    "node": "18.x"
-  },
   "scripts": {
     "dev": "next dev --port 3000",
     "build": "next build",
-    "start": "node .next/standalone/server.js",
+    "start": "next start",
     "lint": "next lint --max-warnings 0",
     "check-types": "tsc --noEmit"
   },
