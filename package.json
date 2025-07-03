@@ -6,7 +6,7 @@
     "dev": "turbo dev",
     "lint": "turbo lint",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
-    "setup": "cd packages/db && pnpm install --no-frozen-lockfile && pnpm exec prisma migrate dev && pnpm exec prisma generate && cd ../../apps/http-backend && pnpm install --no-frozen-lockfile && cd ../ws-backend && pnpm install --no-frozen-lockfile && cd ../excelidraw-frontend && pnpm install --no-frozen-lockfile",
+    "setup": "pnpm install --no-frozen-lockfile && cd packages/db && pnpm exec prisma migrate dev && pnpm exec prisma generate && cd ../.. && turbo run build",
     "start-all": "cd apps/http-backend && pnpm run dev & cd ../ws-backend && pnpm run dev & cd ../excelidraw-frontend && pnpm run dev"
   },
   "devDependencies": {
