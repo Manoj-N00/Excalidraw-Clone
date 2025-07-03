@@ -5,15 +5,19 @@
   "globalPassThroughEnv": ["VERCEL_URL", "PORT"],
   "tasks": {
     "build": {
-      "dependsOn": ["^build"],
-      "inputs": ["$TURBO_DEFAULT$", ".env*"],
-      "env": ["NEXT_PUBLIC_*", "DATABASE_URL","JWT_SECRET"],
+      "dependsOn": ["^build", "^db:generate"],
+      "inputs": ["$TURBO_DEFAULT$", ".env*", "src/**/*.{ts,tsx}"],
+      "env": ["NEXT_PUBLIC_*", "DATABASE_URL", "JWT_SECRET"],
       "outputs": [
         "dist/**",
         "build/**",
         ".next/**",
-        "!.next/cache/**"
+        "!.next/cache/**",
+        ".vercel/**"
       ]
+    },
+    "db:generate": {
+      "cache": false
     },
     "lint": {
       "dependsOn": ["^lint"]
