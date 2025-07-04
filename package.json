@@ -6,17 +6,18 @@
     "dev": "turbo dev",
     "lint": "turbo lint",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
-    "setup": "pnpm install --no-frozen-lockfile && cd apps/http-backend && pnpm install && cd ../ws-backend && pnpm install && cd ../excelidraw-frontend && pnpm install  && cd ../../packages/db && pnpm exec prisma migrate dev && pnpm exec prisma generate ",
-    "start-all": "cross-env NODE_ENV=production turbo run build --filter=http-backend --filter=ws-backend --filter=web && concurrently \"cd apps/http-backend && pnpm start\" \"cd apps/ws-backend && pnpm start\" \"cd apps/excelidraw-frontend && next build"
+    "setup": "pnpm install --no-frozen-lockfile && cd packages/db && pnpm exec prisma migrate dev && pnpm exec prisma generate && cd ../.. && turbo run build",
+    "start-all": "turbo run dev --parallel --filter=http-backend --filter=ws-backend --filter=excelidraw-frontend"
   },
   "devDependencies": {
-    "concurrently": "^8.2.2",
-    "cross-env": "^7.0.3",
     "prettier": "^3.2.5",
     "turbo": "^2.3.3",
     "typescript": "5.5.4"
   },
   "packageManager": "pnpm@9.0.0",
+  "engines": {
+    "node": ">=18"
+  },
   "dependencies": {
     "next": "^15.3.4"
   }

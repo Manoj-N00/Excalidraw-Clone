@@ -1,6 +1,6 @@
 export const getRoom = async (roomName: string) => {
-    // const res = await fetch(`https://excalidraw-clone.onrender.com/room/${roomName}`, {
-const res = await fetch(`http://localhost:3001/room/${roomName}`, {
+    const res = await fetch(`https://excalidraw-clone.onrender.com/room/${roomName}`, {
+//const res = await fetch(`http://localhost:3001/room/${roomName}`, {
         method: "GET",
     });
 
