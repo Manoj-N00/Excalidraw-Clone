@@ -1,5 +1,5 @@
 /** @type {import('next').NextConfig} */
-const nextConfig: NextConfig = {
+const nextConfig = {
   distDir: '.next',
   webpack: (config, { isServer }) => {
     config.resolve.fallback = {
@@ -11,6 +11,5 @@ const nextConfig: NextConfig = {
   },
 };
 
-  
-  export default nextConfig;
+export default nextConfig;
   
